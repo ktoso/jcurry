@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pl.project13</groupId>
-  <artifactId>jcurry</artifactId>
+  <artifactId>j-apply-partial</artifactId>
   <version>1.0-SNAPSHOT</version>
 
 

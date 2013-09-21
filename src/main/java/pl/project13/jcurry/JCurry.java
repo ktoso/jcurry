@@ -1,5 +1,7 @@
 package pl.project13.jcurry;
 
+import java.util.function.Function;
+
 abstract class CurryMode<T> {
   abstract boolean curried();
 
@@ -56,7 +58,11 @@ interface Function3<T1, T2, T3, R> {
 
 public class JCurry {
 
-  public static <T1, T2, T3, R> Function2 curry(Function3<T1, T2, T3, R> func, CurryMode<T1> m1, CurryMode<T2> m2, CurryMode<T3> m3) {
+  public static <T1, T2, T3, R> Function<T1, Function<T2, Function<T3, R>>> curry(Function3<T1, T2, T3, R> func) {
+    return t1 -> t2 -> t3 -> func.apply(t1, t2, t3);
+  }
+
+  public static <T1, T2, T3, R> Function2 applyPartial(Function3<T1, T2, T3, R> func, CurryMode<T1> m1, CurryMode<T2> m2, CurryMode<T3> m3) {
     if (!m1.curried() && m2.curried() && m3.curried()) {
       return (tt1, tt2) -> func.apply(m1.value(), (T2) tt1, (T3) tt2);
 
