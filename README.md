@@ -15,6 +15,7 @@ Having that said is certainly possible to curry with Java without the super amou
 
 The tests bellow showcase both, *currying* a `Function3` into `Function1 => Function1 => Function1`:
 
+```java
     @Test
     public void shouldCurryFunction() throws Exception {
       // given
@@ -30,9 +31,11 @@ The tests bellow showcase both, *currying* a `Function3` into `Function1 => Func
 
       assertThat(result).isEqualTo(6);
     }
+```
 
 as well as *partial application*, although it's not really typesafe in this example:
 
+```java
     @Test
     public void shouldCurryOneArgument() throws Exception {
       // given
@@ -45,6 +48,7 @@ as well as *partial application*, although it's not really typesafe in this exam
       Integer got = curried.apply(0, 0);
       assertThat(got).isEqualTo(1);
     }
+```
 
 This is taken from a Proof Of Concept I've just implemented for fun before JavaOne tomorrow in an hour "because I was bored" ;-) The code is available here: https://github.com/ktoso/jcurry
 
@@ -54,7 +58,7 @@ All in all, it's doable, yet in Scala it's out of the box ;-)
 
 Disclaimer
 ==========
-Scala is great.
+<a href="http://www.scala-lang.org/">Scala</a> is great.
 
 License
 =======
